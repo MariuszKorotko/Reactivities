@@ -23,4 +23,4 @@ https://joachim8675309.medium.com/installing-node-js-with-nvm-4dc469c977d9
 * Generate Assets for Build and Debug to create .vscode folder
 * Preferences -> Settings -> exclude -> Add Pattern
 * Preferences -> Settings -> private -> C# Extension
-* * Preferences -> Settings -> this -> C# Extension
+* Preferences -> Settings -> this -> C# Extension
