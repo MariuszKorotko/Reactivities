@@ -50,11 +50,9 @@ namespace Application.Photos
                 if (!user.Photos.Any(p => p.IsMain)) photo.IsMain = true;
 
                 user.Photos.Add(photo);
-                var result = await _context.SaveChangesAsync() > 0;
+                var success = await _context.SaveChangesAsync() > 0;
 
-                if (result) return Result<Photo>.Success(photo);
-
-                return Result<Photo>.Failure("Problem with adding photo");
+                return success ? Result<Photo>.Success(photo) : Result<Photo>.Failure("Problem with adding photo");
             }
         }
     }

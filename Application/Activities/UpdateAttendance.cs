@@ -65,9 +65,9 @@ namespace Application.Activities
                     activity.Attendees.Add(attendance);
                 }
 
-                var result = await _contex.SaveChangesAsync() > 0;
+                var success = await _contex.SaveChangesAsync() > 0;
 
-                return result ? Result<Unit>.Success(Unit.Value) : Result<Unit>.Failure("Problem updating attendance");
+                return success ? Result<Unit>.Success(Unit.Value) : Result<Unit>.Failure("Problem updating attendance");
             }
         }
     }
