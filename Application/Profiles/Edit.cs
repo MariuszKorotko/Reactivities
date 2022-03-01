@@ -39,7 +39,7 @@ namespace Application.Profiles
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.UserName == _userAccessor.GetUsername());
+                    .SingleOrDefaultAsync(u => u.UserName == _userAccessor.GetUsername());
 
                 user.DisplayName = request.DisplayName ?? user.DisplayName;
                 user.Bio = request.Bio ?? user.Bio;

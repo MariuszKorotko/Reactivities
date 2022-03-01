@@ -37,7 +37,7 @@ namespace Application.Activities
             }
             public async Task<Result<Unit>> Handle(Command request, CancellationToken ct)
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u =>
+                var user = await _context.Users.SingleOrDefaultAsync(u =>
                     u.UserName == _userAccessor.GetUsername());
 
                 var attendee = new ActivityAttendee
