@@ -2,9 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
+using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -22,17 +22,19 @@ namespace Application.Activities
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
+            private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext context, IMapper mapper)
+            public Handler(DataContext context, IMapper mapper, IUserAccessor userAccessor)
             {
+                _userAccessor = userAccessor;
                 _context = context;
                 _mapper = mapper;
             }
             public async Task<Result<ActivityDto>> Handle(Query request, CancellationToken ct)
             {
                 var activity = await _context.Activities
-                    .AsNoTracking()
-                    .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider,
+                        new { currentUsername = _userAccessor.GetUsername() })
                     .FirstOrDefaultAsync(a => a.Id == request.Id, ct);
 
                 return Result<ActivityDto>.Success(activity);
