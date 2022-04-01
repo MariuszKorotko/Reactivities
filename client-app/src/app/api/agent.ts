@@ -3,8 +3,7 @@ import { toast } from 'react-toastify';
 import { history } from '../..';
 import { Activity, ActivityFormValues } from '../models/activity';
 import { PaginatedResult } from '../models/pagination';
-import { Photo, Profile } from '../models/profile';
-import { Result } from '../models/result';
+import { Photo, Profile, UserActivity } from '../models/profile';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -91,7 +90,7 @@ const Account = {
 }
 
 const Profiles = {
-    get: (username: string) => reqeusts.get<Result<Profile>>(`/profiles/${username}`),
+    get: (username: string) => reqeusts.get<Profile>(`/profiles/${username}`),
     uploadPhoto: (file: Blob) => {
         let formData = new FormData();
         formData.append('File', file);
@@ -104,7 +103,9 @@ const Profiles = {
     updateProfile: (profile: Partial<Profile>) => reqeusts.put('/profiles', profile),
     updateFollowing: (username: string) => reqeusts.post(`/follow/${username}`, {}),
     listFollowings: (username: string, predicate: string) => 
-        reqeusts.get<Result<Profile[]>>(`/follow/${username}?predicate=${predicate}`),
+        reqeusts.get<Profile[]>(`/follow/${username}?predicate=${predicate}`),
+    listActivities: (username: string, predicate: string) =>
+        reqeusts.get<UserActivity[]>(`/profiles/${username}/activities?predicate=${predicate}`),
 }
 
 const agent = {

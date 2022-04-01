@@ -1,4 +1,4 @@
-import { format, isThisISOWeek } from "date-fns";
+import { format } from "date-fns";
 import { makeAutoObservable, reaction, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Activity, ActivityFormValues } from "../models/activity";
