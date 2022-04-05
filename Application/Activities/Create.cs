@@ -1,11 +1,6 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Core;
 using Application.Interfaces;
 using Domain;
 using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Activities

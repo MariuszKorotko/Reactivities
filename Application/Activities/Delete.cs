@@ -1,8 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Core;
-using MediatR;
 using Persistence;
 
 namespace Application.Activities

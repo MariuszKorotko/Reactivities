@@ -1,10 +1,5 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Core;
-using AutoMapper;
 using Domain;
 using FluentValidation;
-using MediatR;
 using Persistence;
 
 namespace Application.Activities

@@ -1,16 +1,10 @@
-using System;
 using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
 using Application.Photos;
 using Infrastructure.Photos;
 using Infrastructure.Security;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Persistence;
 
 namespace API.Extensions
 {
